@@ -29,9 +29,9 @@ for line in lines:
 
     # Determinar plantilla de nombre de archivo
     if time_ranges:
-        output_template = f"{output_dir}/%(title)s-%(id)s-%(section_title)s-%(autonumber)s.%(ext)s"
+        output_template = f"{output_dir}/%(title)s-%(id)s-%(section_title)s.%(ext)s"
     else:
-        output_template = f"{output_dir}/%(title)s-%(id)s%-(autonumber)s.%(ext)s"
+        output_template = f"{output_dir}/%(title)s-%(id)s.%(ext)s"
 
     # Construcción del comando yt-dlp
     command = [
