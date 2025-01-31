@@ -16,15 +16,16 @@ for line in lines:
         continue
     
     url = parts[0]  # Primer elemento es el link
-    time_range = None
+    time_ranges = []
     format_option = "mp4"
 
-    # Analizar si hay tiempos y formato mp3
+    # Analizar elementos adicionales
     for part in parts[1:]:
-        if ":" in part:  # Si tiene ":", probablemente es un rango de tiempo
-            time_range = part
-        elif part.lower() == "mp3":  # Si encuentra "mp3", cambia formato
+        part_lower = part.lower()
+        if part_lower == "mp3":
             format_option = "mp3"
+        elif ":" in part:
+            time_ranges.append(part)
 
     # Construcción del comando yt-dlp
     command = [
@@ -34,17 +35,23 @@ for line in lines:
         "-o", f"{output_dir}/%(title)s.%(ext)s"
     ]
 
-    # Si hay un rango de tiempo, agregarlo
-    if time_range:
-        command += ["--download-sections", f"*{time_range}"]
+    # Agregar múltiples rangos de tiempo si existen
+    if time_ranges:
+        # Agregar split-chapters si hay múltiples rangos
+        if len(time_ranges) > 1:
+            command.append("--split-chapters")
+        
+        # Agregar cada rango como parámetro separado
+        for time in time_ranges:
+            command += ["--download-sections", f"*{time}"]
 
-    # Seleccionar el formato de salida
+    # Configurar formato de salida
     if format_option == "mp3":
-        command += ["-x", "--audio-format", "--embed-thumbnail", "mp3"]
+        command += ["-x", "--audio-format", "mp3", "--embed-thumbnail"]
     else:
         command += ["-f", "mp4"]
 
-    # Agregar la URL al comando
+    # Agregar la URL al final del comando
     command.append(url)
 
     # Ejecutar el comando
