@@ -1,0 +1,15 @@
+Agregar especialización de tiempo
+Si se agrega * se instala el resto (derecha o izq)
+
+2. Quiero que se agregue un recortador avanzado
+
+Si se agrega un número será el tiempo que se recorte a partir del primer tiempo
+Ej.
+12:04-5 # Significa que se recortarán los siguientes 5 sgs
+1:10-75 # Significa que se descargarán los siguientes 75 segundos.
+
+Y en viceversa tambien
+
+20 - 2:15 # Se descargarán los 20 segundos antes del minuto 2:15
+
+Es algo complicado (creo) por lo que se retrasará.

@@ -27,21 +27,23 @@ for line in lines:
         elif ":" in part:
             time_ranges.append(part)
 
+    # Determinar plantilla de nombre de archivo
+    if time_ranges:
+        output_template = f"{output_dir}/%(title)s-%(id)s-%(section_title)s-%(autonumber)s.%(ext)s"
+    else:
+        output_template = f"{output_dir}/%(title)s-%(id)s%-(autonumber)s.%(ext)s"
+
     # Construcción del comando yt-dlp
     command = [
         "yt-dlp",
         "--no-playlist",
         "--flat-playlist",
-        "-o", f"{output_dir}/%(title)s.%(ext)s"
+        "-o", output_template
     ]
 
     # Agregar múltiples rangos de tiempo si existen
     if time_ranges:
-        # Agregar split-chapters si hay múltiples rangos
-        if len(time_ranges) > 1:
-            command.append("--split-chapters")
-        
-        # Agregar cada rango como parámetro separado
+        command.append("--split-chapters")
         for time in time_ranges:
             command += ["--download-sections", f"*{time}"]
 
