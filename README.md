@@ -19,8 +19,9 @@ Con CMD en tu computadora. (Windows)
 `git clone https://github.com/everdmacrrr/yt-dlp-txt`
 
 5. Ya esta instalado.
+
 Nota:
-Desde antes escoge donde quieres aguardar el proyecto.
+Desde antes escoge donde quieres aguardar el proyecto. (en que carpeta)
 
 ### Formato dentro del txt
 
