@@ -76,7 +76,7 @@ Descargar parte de un vídeo pero en MP3
 https://youtu.be/_UmdeHIY6DM 1:45-1:59 mp3
 ```
 
-### Atajos en opciones de tiempo
+## Atajos en opciones de tiempo
 
 Aqui esta lo divertido.
 
@@ -101,7 +101,7 @@ Si se escribe
 `15-02:30`
 Se descargan los 15 segundos antes del minuto 2:30
 
-### Notas:
+## Notas:
 
 Puede que tenga errores, es el primer git que subo para compartir.
 
